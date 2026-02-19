@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Source_Code_Pro } from "next/font/google";
+import { Inter, Source_Code_Pro, Bungee, Bungee_Inline } from "next/font/google";
 import { SafeArea } from "@coinbase/onchainkit/minikit";
 import { minikitConfig } from "@/minikit.config";
 import { RootProvider } from "./rootProvider";
@@ -35,6 +35,9 @@ const sourceCodePro = Source_Code_Pro({
   subsets: ["latin"],
 });
 
+const bungee = Bungee({ subsets: ["latin"], weight: ["400"], variable: "--font-bungee" });
+const bungeeInline = Bungee_Inline({ subsets: ["latin"], weight: ["400"], variable: "--font-bungee-inline" });
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -43,7 +46,7 @@ export default function RootLayout({
   return (
     <RootProvider>
       <html lang="en">
-        <body className={`${inter.variable} ${sourceCodePro.variable}`}>
+        <body className={`${inter.variable} ${sourceCodePro.variable} ${bungee.variable} ${bungeeInline.variable}`}>
           <SafeArea>{children}</SafeArea>
         </body>
       </html>
